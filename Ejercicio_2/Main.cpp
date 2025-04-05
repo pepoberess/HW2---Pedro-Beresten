@@ -5,10 +5,10 @@ int main(){
     int legajo;
     int opcion;
     vector <Estudiante*> estudiantes;
-    Curso curso(estudiantes);
+    Curso curso;
     
     do {
-        cout << "\n1. Inscribir estudiante" << endl;
+        cout << "1. Inscribir estudiante" << endl;
         cout << "2. Desinscribir estudiante" << endl;
         cout << "3. Ver si estudiante está inscripto" << endl;
         cout << "4. Ver si el curso está completo" << endl;
@@ -27,6 +27,7 @@ int main(){
                 cin >> legajo;               
                 Estudiante* nuevo = new Estudiante(nombre, legajo);
                 curso.inscribir(nuevo);
+                estudiantes.push_back(nuevo);
                 cout << "Se ha inscripto correctamente" << endl;
                 break;
             }
@@ -59,20 +60,24 @@ int main(){
             }
             case 6: {
                 Curso copia(curso);
-                cout << "Curso copiado exitosamente";
+                cout << "Curso copiado exitosamente" << endl;
                 break;
             }
             case 7: {
-                cout << "Ingrese el nombre del estudiante: ";
-                cin >> nombre;
                 cout << "Ingrese legajo del estudiante: ";
                 cin >> legajo;
                 
                 if (!curso.esta_inscripto(legajo)) {
                     cout << "El estudiante no está en el curso" << endl;
+                    break;
                 } else {
-                    Estudiante estudiante(nombre, legajo);
-                    cout << "El promedio general de: " << nombre << "es" << estudiante.darpromedio() << endl;
+                    for (unsigned int i = 0; i < estudiantes.size(); i++){
+                        if (estudiantes.at(i)->darlegajo() == legajo){
+                            cout << "el promedio de " << estudiantes.at(i)->darnombre() << "es " << estudiantes.at(i)->darpromedio() << endl;
+                            break;
+                        }
+
+                    }
                 }
                 break;
             }
@@ -81,14 +86,14 @@ int main(){
                 break;
             }
             default: {
-                cout << "Opcion invalida. Intente nuevamente.\n";
+                cout << "Opcion invalida. Intente nuevamente." << endl;
                 break;
             }
         }
     } while(opcion != 8);
 
     // libero memoria
-    for(unsigned long int i; i < estudiantes.size(); i++) {
+    for(unsigned long int i = 0; i < estudiantes.size(); i++) {
         delete estudiantes.at(i);
     }
 

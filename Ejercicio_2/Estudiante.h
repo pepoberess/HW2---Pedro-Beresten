@@ -13,7 +13,7 @@ private:
     vector<pair<string, float>> notas;
     
 public:
-    Estudiante(string n, int l) {}
+    Estudiante(string n, int l) : nombre(n), legajo(l) {}
     string darnombre();
     int darlegajo();
     float darpromedio();

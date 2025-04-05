@@ -4,11 +4,12 @@ string Estudiante :: darnombre() {return nombre;}
 int Estudiante :: darlegajo() {return legajo;}
 
 float Estudiante :: darpromedio() {
-    int contador = 0;
+    if (notas.empty()) return 0.0;
+    float sumatoria = 0;
     for (long unsigned int i = 0;  i < notas.size(); i++){
-        contador += notas[i].second;
+        sumatoria += notas[i].second;
     }
-    return contador/notas.size();
+    return sumatoria/notas.size();
 }
 
 bool Estudiante :: operator<(const Estudiante& otro) const {

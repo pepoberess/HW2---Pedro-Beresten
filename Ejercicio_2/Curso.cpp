@@ -1,9 +1,13 @@
 #include "Curso.h"
 
-void Curso :: inscribir(Estudiante* nuevo) {if (!esta_inscripto(nuevo->darlegajo())) estudiantes.push_back(nuevo);}
+void Curso :: inscribir(Estudiante* nuevo) {
+    if (!esta_inscripto(nuevo->darlegajo())) {
+        estudiantes.push_back(nuevo);
+    }
+}
 int Curso :: desinscribir(const int legajo) {
     if (!esta_inscripto(legajo)){
-        cout << "El estudiante no está en el curso";\
+        cout << "El estudiante no está en el curso" << endl;
         return 0;
     }
 

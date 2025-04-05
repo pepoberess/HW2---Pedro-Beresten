@@ -12,7 +12,7 @@ class Curso {
     
     public:
         // Constructor por defecto
-        Curso(vector<Estudiante*> estudiantes) : estudiantes(estudiantes) {}
+        Curso() = default;
     
         // Inscripción de estudiantes
         void inscribir(Estudiante* nuevo);
